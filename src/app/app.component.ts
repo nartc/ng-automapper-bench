@@ -1,16 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Mapper } from '@nartc/automapper';
+import { mapFrom, Mapper } from '@nartc/automapper';
 import { morphism } from 'morphism';
 import { UsersToken } from '../constants';
 import { Bio, BioVm, User, UserVm } from './models/user';
 
 Mapper.createMap(User, UserVm)
-  .forMember(d => d.first, opts => opts.mapFrom(s => s.firstName))
-  .forMember(d => d.last, opts => opts.mapFrom(s => s.lastName))
-  .forMember(d => d.full, opts => opts.mapFrom(s => s.firstName + ' ' + s.lastName));
+  .forMember(d => d.first, mapFrom(s => s.firstName))
+  .forMember(d => d.last, mapFrom(s => s.lastName))
+  .forMember(d => d.full, mapFrom(s => s.firstName + ' ' + s.lastName));
 Mapper.createMap(Bio, BioVm)
-  .forMember(d => d.isAdult, opts => opts.mapFrom(s => s.age > 18))
-  .forMember(d => d.birthday, opts => opts.mapFrom(s => s.birthday.toDateString()));
+  .forMember(d => d.isAdult, mapFrom(s => s.age > 18))
+  .forMember(d => d.birthday, mapFrom(s => s.birthday.toDateString()));
 
 @Component({
   selector: 'app-root',
