@@ -12,7 +12,7 @@ if (environment.production) {
 
 const users = [];
 
-for (let i = 0; i < 100000; i++) {
+for (let i = 0; i < 50000; i++) {
   const user = new User();
   user.firstName = 'Chau' + i;
   user.lastName = 'Tran' + i;

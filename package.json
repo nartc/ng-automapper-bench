@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
-    "@nartc/automapper": "6.0.0-next.5",
+    "@nartc/automapper": "5.0.13",
     "morphism": "^1.12.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
