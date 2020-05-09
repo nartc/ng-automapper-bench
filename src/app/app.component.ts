@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.users);
+    console.log(Mapper.map(this.users[0], UserVm));
   }
 
   map(type: 1 | 2 | 3) {
@@ -68,7 +70,7 @@ export class AppComponent implements OnInit {
     const t0 = performance.now();
     const vms = Mapper.mapArray(this.users, UserVm);
     const t1 = performance.now();
-    console.log(`mapper ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms');
+    console.log(`mapper ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms', vms);
     this.mapperTimes.push(t1 - t0);
   }
 
@@ -85,7 +87,7 @@ export class AppComponent implements OnInit {
       }
     }, this.users);
     const t1 = performance.now();
-    console.log(`mapper-morphism ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms');
+    console.log(`mapper-morphism ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms', vmsMorp);
     this.mapMorphismTimes.push(t1 - t0);
   }
 
@@ -104,7 +106,7 @@ export class AppComponent implements OnInit {
 
     const vmsMorpMapper = mapper(this.users);
     const t1 = performance.now();
-    console.log(`mapper-morphism-create-mapper ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms');
+    console.log(`mapper-morphism-create-mapper ${ times - iteration }`, (t1 - t0).toFixed(4) + 'ms', vmsMorpMapper);
     this.mapMorphismWithMapperTimes.push(t1 - t0);
   }
 }
