@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { mapFrom, Mapper } from '@nartc/automapper';
 import { morphism } from 'morphism';
 import { UsersToken } from '../constants';
@@ -25,7 +25,7 @@ Mapper.createMap(Bio, BioVm)
   `,
   styles: []
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'ng-automapper';
   times = '20';
   mapperTimes = [];
@@ -40,11 +40,6 @@ export class AppComponent implements OnInit {
 
   constructor(@Inject(UsersToken) private users: User[]) {
 
-  }
-
-  ngOnInit() {
-    console.log(this.users);
-    console.log(Mapper.map(this.users[0], UserVm));
   }
 
   map(type: 1 | 2 | 3) {
